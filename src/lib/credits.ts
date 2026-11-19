@@ -1,4 +1,76 @@
+import type { Prisma, PrismaClient } from "../../generated/prisma";
 import { TRPCError } from "@trpc/server";
+
+export const INITIAL_SIGNUP_CREDITS = 150;
+
+type PrismaTx = PrismaClient | Prisma.TransactionClient;
+
+/**
+ * Ensures a user has received their initial 150 free signup credits.
+ * If the user has never received a SIGNUP credit entry, one is created.
+ * Returns the current total balance for the user.
+ */
+export async function ensureSignupCredits(db: PrismaTx, userId: string): Promise<number> {
+  const existingSignup = await db.creditEntry.findFirst({
+    where: { userId, reason: "SIGNUP" },
+  });
+
+  if (!existingSignup) {
+    const userExists = await db.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (userExists) {
+      await db.creditEntry.create({
+        data: {
+          userId,
+          delta: INITIAL_SIGNUP_CREDITS,
+          reason: "SIGNUP",
+        },
+      });
+    } else {
+      try {
+        const { clerkClient } = await import("@clerk/nextjs/server");
+        const client = await clerkClient();
+        const clerkUser = await client.users.getUser(userId);
+        if (clerkUser?.emailAddresses?.[0]?.emailAddress) {
+          const email = clerkUser.emailAddresses[0].emailAddress;
+          await db.user.upsert({
+            where: { emailAddress: email },
+            update: {
+              imageUrl: clerkUser.imageUrl,
+              firstName: clerkUser.firstName,
+              lastName: clerkUser.lastName,
+            },
+            create: {
+              id: userId,
+              emailAddress: email,
+              imageUrl: clerkUser.imageUrl,
+              firstName: clerkUser.firstName,
+              lastName: clerkUser.lastName,
+            },
+          });
+          await db.creditEntry.create({
+            data: {
+              userId,
+              delta: INITIAL_SIGNUP_CREDITS,
+              reason: "SIGNUP",
+            },
+          });
+        }
+      } catch (err) {
+        console.error("Auto-syncing user for signup credits failed:", err);
+      }
+    }
+  }
+
+  const { _sum } = await db.creditEntry.aggregate({
+    where: { userId },
+    _sum: { delta: true },
+  });
+
+  return _sum.delta ?? 0;
+}
 
 /** Counts every file (blob) in the repo's default branch with one GitHub call. */
 export async function countRepoFiles(githubUrl: string, githubToken?: string) {

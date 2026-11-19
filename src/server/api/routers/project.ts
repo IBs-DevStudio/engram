@@ -2,7 +2,7 @@ import { after } from "next/server";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
-import { countRepoFiles } from "@/lib/credits";
+import { countRepoFiles, ensureSignupCredits } from "@/lib/credits";
 import { parseGithubUrl, pollCommits } from "@/lib/github";
 import { indexRepo } from "@/lib/indexer";
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
@@ -12,11 +12,7 @@ const POLL_COOLDOWN_MS = 5 * 60 * 1000;
 
 export const projectRouter = createTRPCRouter({
   getMyCredits: protectedProcedure.query(async ({ ctx }) => {
-    const { _sum } = await ctx.db.creditEntry.aggregate({
-      where: { userId: ctx.userId },
-      _sum: { delta: true },
-    });
-    return _sum.delta ?? 0;
+    return ensureSignupCredits(ctx.db, ctx.userId);
   }),
 
   checkCredits: protectedProcedure
@@ -28,11 +24,8 @@ export const projectRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const fileCount = await countRepoFiles(input.githubUrl, input.githubToken);
-      const { _sum } = await ctx.db.creditEntry.aggregate({
-        where: { userId: ctx.userId },
-        _sum: { delta: true },
-      });
-      return { fileCount, userCredits: _sum.delta ?? 0 };
+      const userCredits = await ensureSignupCredits(ctx.db, ctx.userId);
+      return { fileCount, userCredits };
     }),
 
   createProject: protectedProcedure
@@ -53,11 +46,7 @@ export const projectRouter = createTRPCRouter({
       const fileCount = await countRepoFiles(input.githubUrl, input.githubToken);
 
       const project = await ctx.db.$transaction(async (tx) => {
-        const { _sum } = await tx.creditEntry.aggregate({
-          where: { userId: ctx.userId },
-          _sum: { delta: true },
-        });
-        const balance = _sum.delta ?? 0;
+        const balance = await ensureSignupCredits(tx, ctx.userId);
         if (balance < fileCount) {
           throw new TRPCError({
             code: "FORBIDDEN",

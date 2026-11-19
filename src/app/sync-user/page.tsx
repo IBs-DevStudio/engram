@@ -2,6 +2,7 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { notFound, redirect } from "next/navigation";
 import { db } from "@/server/db";
+import { ensureSignupCredits } from "@/lib/credits";
 
 export default async function SyncUser() {
   const { userId } = await auth();
@@ -34,6 +35,9 @@ export default async function SyncUser() {
       lastName: user.lastName,
     },
   });
+
+  // Provision initial 150 free credits
+  await ensureSignupCredits(db, userId);
 
   return redirect("/dashboard");
 }
