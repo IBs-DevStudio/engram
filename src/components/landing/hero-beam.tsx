@@ -17,14 +17,14 @@ export function HeroBeam({ isSignedIn = false }: HeroBeamProps) {
 
       <div className="relative z-10 mx-auto max-w-5xl px-3 sm:px-6 text-center">
         {/* 1. Announcement Pill */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-indigo-50/90 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs font-semibold text-indigo-700 backdrop-blur-md shadow-2xs transition-all hover:border-indigo-300 hover:scale-[1.02]">
+        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/90 dark:border-indigo-500/30 bg-indigo-50/90 dark:bg-indigo-950/50 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs font-semibold text-indigo-700 dark:text-indigo-300 backdrop-blur-md shadow-2xs transition-all hover:border-indigo-300 dark:hover:border-indigo-500/50 hover:scale-[1.02]">
           <span className="flex size-2 rounded-full bg-indigo-600 animate-pulse" />
-          <span className="font-sans font-medium text-indigo-900">Your codebase&apos;s memory</span>
-          <ChevronRight className="size-3.5 text-indigo-500" />
+          <span className="font-sans font-medium text-indigo-900 dark:text-indigo-200">Your codebase&apos;s memory</span>
+          <ChevronRight className="size-3.5 text-indigo-500 dark:text-indigo-400" />
         </div>
 
         {/* 2. Headline: Responsive typography with Indigo-Violet Gradient */}
-        <h1 className="mt-5 sm:mt-7 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-brand tracking-tight text-slate-950 leading-[1.12] sm:leading-[1.1]">
+        <h1 className="mt-5 sm:mt-7 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-brand tracking-tight text-slate-950 dark:text-foreground leading-[1.12] sm:leading-[1.1]">
           Your code has answers.
           <br />
           <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent">
@@ -33,10 +33,10 @@ export function HeroBeam({ isSignedIn = false }: HeroBeamProps) {
         </h1>
 
         {/* 3. Subhead */}
-        <p className="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed px-2">
+        <p className="mt-4 sm:mt-6 text-sm sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed px-2">
           Ask questions about any repository, get AI commit summaries, and turn meetings into action items. Engram remembers it all.
         </p>
-        <p className="mt-2 text-xs sm:text-sm font-semibold tracking-wide text-slate-700 font-mono">
+        <p className="mt-2 text-xs sm:text-sm font-semibold tracking-wide text-slate-700 dark:text-slate-300 font-mono">
           Every answer cites the exact files it came from.
         </p>
 
@@ -56,7 +56,7 @@ export function HeroBeam({ isSignedIn = false }: HeroBeamProps) {
             <Button
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto h-12 px-7 text-sm font-medium rounded-xl border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-xs transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98] touch-friendly"
+              className="w-full sm:w-auto h-12 px-7 text-sm font-medium rounded-xl border-slate-200 dark:border-border bg-white dark:bg-card hover:bg-slate-50 dark:hover:bg-muted text-slate-800 dark:text-foreground shadow-xs transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98] touch-friendly"
             >
               <span>See how it works</span>
             </Button>
@@ -64,35 +64,35 @@ export function HeroBeam({ isSignedIn = false }: HeroBeamProps) {
         </div>
 
         {/* Micro-copy badge - responsive wrapping */}
-        <div className="mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs text-slate-500 px-4">
+        <div className="mt-3.5 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[11px] sm:text-xs text-slate-500 dark:text-muted-foreground px-4">
           <span className="flex items-center gap-1.5">
             <span className="size-1.5 rounded-full bg-emerald-500" />
             <span>150 free credits</span>
           </span>
-          <span className="text-slate-300 hidden sm:inline">&bull;</span>
+          <span className="text-slate-300 dark:text-slate-600 hidden sm:inline">&bull;</span>
           <span>No credit card needed</span>
-          <span className="text-slate-300 hidden sm:inline">&bull;</span>
+          <span className="text-slate-300 dark:text-slate-600 hidden sm:inline">&bull;</span>
           <span>Pay once, never a subscription</span>
         </div>
 
         {/* 5. Bottom Feature Matrix Pill Row - Device Friendly Wrap */}
-        <div className="mt-8 sm:mt-10 inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 rounded-2xl sm:rounded-full border border-slate-200/90 bg-white/95 p-2 sm:px-5 sm:py-2 backdrop-blur-xl shadow-xs max-w-full">
-          <span className="rounded-lg sm:rounded-full bg-slate-100 border border-slate-200/80 px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-700">
+        <div className="mt-8 sm:mt-10 inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 rounded-2xl sm:rounded-full border border-slate-200/90 dark:border-border bg-white/95 dark:bg-card/90 p-2 sm:px-5 sm:py-2 backdrop-blur-xl shadow-xs max-w-full">
+          <span className="rounded-lg sm:rounded-full bg-slate-100 dark:bg-muted/80 border border-slate-200/80 dark:border-border text-slate-700 dark:text-slate-300 px-2.5 py-1 text-[11px] sm:text-xs font-mono transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-950/60 hover:text-indigo-700 dark:hover:text-indigo-300">
             Semantic Code Search
           </span>
-          <span className="rounded-lg sm:rounded-full bg-slate-100 border border-slate-200/80 px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-700">
+          <span className="rounded-lg sm:rounded-full bg-slate-100 dark:bg-muted/80 border border-slate-200/80 dark:border-border text-slate-700 dark:text-slate-300 px-2.5 py-1 text-[11px] sm:text-xs font-mono transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-950/60 hover:text-indigo-700 dark:hover:text-indigo-300">
             150 Free Credits
           </span>
-          <span className="rounded-lg sm:rounded-full bg-slate-100 border border-slate-200/80 px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-700">
+          <span className="rounded-lg sm:rounded-full bg-slate-100 dark:bg-muted/80 border border-slate-200/80 dark:border-border text-slate-700 dark:text-slate-300 px-2.5 py-1 text-[11px] sm:text-xs font-mono transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-950/60 hover:text-indigo-700 dark:hover:text-indigo-300">
             Verifiable Citations
           </span>
-          <span className="rounded-lg sm:rounded-full bg-slate-100 border border-slate-200/80 px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-700">
+          <span className="rounded-lg sm:rounded-full bg-slate-100 dark:bg-muted/80 border border-slate-200/80 dark:border-border text-slate-700 dark:text-slate-300 px-2.5 py-1 text-[11px] sm:text-xs font-mono transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-950/60 hover:text-indigo-700 dark:hover:text-indigo-300">
             Zero Subscriptions
           </span>
-          <span className="rounded-lg sm:rounded-full bg-slate-100 border border-slate-200/80 px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-700">
+          <span className="rounded-lg sm:rounded-full bg-slate-100 dark:bg-muted/80 border border-slate-200/80 dark:border-border text-slate-700 dark:text-slate-300 px-2.5 py-1 text-[11px] sm:text-xs font-mono transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-950/60 hover:text-indigo-700 dark:hover:text-indigo-300">
             20+ Languages
           </span>
-          <span className="rounded-lg sm:rounded-full bg-slate-100 border border-slate-200/80 px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-700">
+          <span className="rounded-lg sm:rounded-full bg-slate-100 dark:bg-muted/80 border border-slate-200/80 dark:border-border text-slate-700 dark:text-slate-300 px-2.5 py-1 text-[11px] sm:text-xs font-mono transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-950/60 hover:text-indigo-700 dark:hover:text-indigo-300">
             GitHub Synced
           </span>
         </div>

@@ -37,7 +37,7 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/85 backdrop-blur-xl transition-all">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 dark:border-border bg-white/85 dark:bg-background/85 backdrop-blur-xl transition-all">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group shrink-0">
@@ -50,7 +50,7 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
             priority
           />
           <div className="flex items-center gap-1.5">
-            <span className="font-brand font-bold text-lg sm:text-xl tracking-tight text-slate-950">
+            <span className="font-brand font-bold text-lg sm:text-xl tracking-tight text-slate-950 dark:text-foreground">
               Engram
             </span>
             <span className="size-1.5 rounded-full bg-indigo-600 animate-pulse" />
@@ -58,12 +58,12 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="hover:text-slate-950 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-indigo-600 hover:after:w-full after:transition-all after:duration-200"
+              className="hover:text-slate-950 dark:hover:text-foreground transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-indigo-600 hover:after:w-full after:transition-all after:duration-200"
             >
               {link.label}
             </Link>
@@ -84,7 +84,7 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
           ) : (
             <>
               <Link href="/sign-in">
-                <Button variant="ghost" size="sm" className="text-slate-600 hover:text-slate-950 cursor-pointer">
+                <Button variant="ghost" size="sm" className="text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-foreground cursor-pointer">
                   Sign in
                 </Button>
               </Link>
@@ -108,7 +108,7 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="size-9 rounded-xl border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-2xs touch-manipulation cursor-pointer active:scale-95"
+                  className="size-9 rounded-xl border-slate-200 dark:border-border bg-white dark:bg-card hover:bg-slate-50 dark:hover:bg-muted text-slate-700 dark:text-foreground shadow-2xs touch-manipulation cursor-pointer active:scale-95"
                   aria-label="Open mobile navigation menu"
                 />
               }
@@ -116,9 +116,9 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
               <Menu className="size-4.5" />
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-[85vw] max-w-[340px] p-5 sm:p-6 flex flex-col justify-between bg-white text-slate-900 border-l border-slate-200 shadow-2xl">
+            <SheetContent side="right" className="w-[85vw] max-w-[340px] p-5 sm:p-6 flex flex-col justify-between bg-white dark:bg-card text-slate-900 dark:text-foreground border-l border-slate-200 dark:border-border shadow-2xl">
               <div>
-                <SheetHeader className="text-left pb-4 border-b border-slate-200/80">
+                <SheetHeader className="text-left pb-4 border-b border-slate-200/80 dark:border-border">
                   <div className="flex items-center gap-2.5">
                     <Image
                       src="/logo.svg"
@@ -128,10 +128,10 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
                       className="size-7 rounded-lg"
                     />
                     <div>
-                      <SheetTitle className="font-brand font-bold text-lg text-slate-950 leading-tight">
+                      <SheetTitle className="font-brand font-bold text-lg text-slate-950 dark:text-foreground leading-tight">
                         Engram
                       </SheetTitle>
-                      <p className="text-[11px] text-slate-500 font-mono">
+                      <p className="text-[11px] text-slate-500 dark:text-muted-foreground font-mono">
                         Your codebase&apos;s memory
                       </p>
                     </div>
@@ -146,9 +146,9 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
                         key={link.label}
                         href={link.href}
                         onClick={() => setIsOpen(false)}
-                        className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-indigo-50/70 active:scale-[0.98] transition-all touch-manipulation"
+                        className="flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50/70 dark:hover:bg-indigo-950/50 active:scale-[0.98] transition-all touch-manipulation"
                       >
-                        <div className="flex size-8 items-center justify-center rounded-lg bg-slate-100 text-slate-600 group-hover:bg-indigo-100 group-hover:text-indigo-600">
+                        <div className="flex size-8 items-center justify-center rounded-lg bg-slate-100 dark:bg-muted text-slate-600 dark:text-slate-300">
                           <Icon className="size-4" />
                         </div>
                         <span>{link.label}</span>
@@ -158,7 +158,7 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
                 </nav>
               </div>
 
-              <div className="pt-5 border-t border-slate-200/80 space-y-2.5">
+              <div className="pt-5 border-t border-slate-200/80 dark:border-border space-y-2.5">
                 {isSignedIn ? (
                   <Link href="/dashboard" onClick={() => setIsOpen(false)} className="block">
                     <Button className="w-full h-11 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl shadow-md gap-2 touch-manipulation font-semibold">
@@ -169,7 +169,7 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
                 ) : (
                   <>
                     <Link href="/sign-in" onClick={() => setIsOpen(false)} className="block">
-                      <Button variant="outline" className="w-full h-11 border-slate-200 rounded-xl text-slate-800 touch-manipulation font-medium">
+                      <Button variant="outline" className="w-full h-11 border-slate-200 dark:border-border rounded-xl text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-muted touch-manipulation font-medium">
                         Sign in
                       </Button>
                     </Link>
@@ -181,7 +181,7 @@ export function Navbar({ isSignedIn = false }: NavbarProps) {
                     </Link>
                   </>
                 )}
-                <p className="text-center text-[10px] text-slate-400 font-mono pt-1">
+                <p className="text-center text-[10px] text-slate-400 dark:text-muted-foreground font-mono pt-1">
                   150 free credits on sign up
                 </p>
               </div>

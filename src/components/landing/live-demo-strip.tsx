@@ -159,36 +159,36 @@ export function LiveDemoStrip() {
   return (
     <div
       id="live-demo"
-      className="relative mx-auto max-w-4xl rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-4 sm:p-7 shadow-xl backdrop-blur-xl transition-all"
+      className="relative mx-auto max-w-4xl rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-border bg-white dark:bg-card p-4 sm:p-7 shadow-xl backdrop-blur-xl transition-all"
     >
       {/* Background glow behind card */}
       <div className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-indigo-500/10 blur-3xl -z-10" />
       <div className="pointer-events-none absolute -left-16 -bottom-16 size-48 rounded-full bg-violet-500/10 blur-3xl -z-10" />
 
       {/* Terminal Header Bar */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 border-b border-slate-200 pb-3 sm:pb-3.5">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 border-b border-slate-200 dark:border-border pb-3 sm:pb-3.5">
         <div className="flex items-center gap-2.5">
           <div className="flex items-center gap-1.5">
             <span className="size-2.5 rounded-full bg-red-400" />
             <span className="size-2.5 rounded-full bg-amber-400" />
             <span className="size-2.5 rounded-full bg-emerald-400" />
           </div>
-          <span className="text-slate-300">|</span>
-          <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs text-slate-600">
-            <Terminal className="size-3.5 text-indigo-600 flex-none" />
-            <span className="text-slate-900 font-semibold">engram-copilot</span>
-            <span className="text-slate-400 hidden xs:inline">&bull;</span>
+          <span className="text-slate-300 dark:text-slate-600">|</span>
+          <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs text-slate-600 dark:text-slate-300">
+            <Terminal className="size-3.5 text-indigo-600 dark:text-indigo-400 flex-none" />
+            <span className="text-slate-900 dark:text-foreground font-semibold">engram-copilot</span>
+            <span className="text-slate-400 dark:text-slate-500 hidden xs:inline">&bull;</span>
             <span className="hidden xs:inline">streaming 5 questions</span>
           </div>
         </div>
 
         <div className="flex items-center gap-2 self-end sm:self-auto">
-          <span className="text-[10px] sm:text-[11px] font-mono text-slate-400">
+          <span className="text-[10px] sm:text-[11px] font-mono text-slate-400 dark:text-muted-foreground">
             Question {currentIndex + 1} of 5
           </span>
           <Badge
             variant="outline"
-            className="border-indigo-200 bg-indigo-50 text-indigo-700 text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5"
+            className="border-indigo-200 dark:border-indigo-500/30 bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5"
           >
             Sample
           </Badge>
@@ -206,7 +206,7 @@ export function LiveDemoStrip() {
               className={`rounded-lg px-2.5 py-1 text-xs font-mono transition-all cursor-pointer touch-friendly active:scale-95 ${
                 isActive
                   ? "bg-indigo-600 text-white font-semibold shadow-xs"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
+                  : "bg-slate-100 dark:bg-muted text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-muted/80 hover:text-slate-900 dark:hover:text-foreground"
               }`}
             >
               <span>{idx + 1}. {item.shortLabel}</span>
@@ -216,24 +216,24 @@ export function LiveDemoStrip() {
       </div>
 
       {/* Question Input Simulator - Device Friendly */}
-      <div className="mt-3 sm:mt-3.5 flex items-center gap-2.5 sm:gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 sm:px-4 min-h-12 py-2.5">
-        <Search className="size-4 text-indigo-600 flex-none" />
-        <p className="flex-1 text-xs sm:text-sm font-medium text-slate-900 font-mono leading-snug break-words">
+      <div className="mt-3 sm:mt-3.5 flex items-center gap-2.5 sm:gap-3 rounded-xl border border-slate-200 dark:border-border bg-slate-50 dark:bg-muted/40 px-3 sm:px-4 min-h-12 py-2.5">
+        <Search className="size-4 text-indigo-600 dark:text-indigo-400 flex-none" />
+        <p className="flex-1 text-xs sm:text-sm font-medium text-slate-900 dark:text-foreground font-mono leading-snug break-words">
           {questionText}
           <span className="inline-block w-1.5 sm:w-2 h-3.5 sm:h-4 ml-1 align-middle bg-indigo-600 animate-pulse shadow-xs" />
         </p>
       </div>
 
       {/* Streaming Answer Box */}
-      <div className="mt-3 sm:mt-3.5 rounded-2xl border border-indigo-200/80 bg-indigo-50/50 p-3.5 sm:p-5 flex flex-col justify-between min-h-[180px] sm:min-h-[175px]">
+      <div className="mt-3 sm:mt-3.5 rounded-2xl border border-indigo-200/80 dark:border-indigo-500/30 bg-indigo-50/50 dark:bg-indigo-950/40 p-3.5 sm:p-5 flex flex-col justify-between min-h-[180px] sm:min-h-[175px]">
         {/* Top Answer Area */}
         <div className="flex items-start gap-2.5 sm:gap-3">
           <div className="flex size-7 flex-none items-center justify-center rounded-lg bg-indigo-600 text-white shadow-xs mt-0.5">
             <Bot className="size-4" />
           </div>
-          <p className="text-xs sm:text-sm text-slate-800 leading-relaxed min-h-[64px] sm:min-h-[58px]">
+          <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed min-h-[64px] sm:min-h-[58px]">
             {answerText || (
-              <span className="text-slate-400 italic text-xs font-mono">
+              <span className="text-slate-400 dark:text-slate-500 italic text-xs font-mono">
                 Synthesizing answer from codebase embeddings...
               </span>
             )}
@@ -242,21 +242,21 @@ export function LiveDemoStrip() {
 
         {/* Source File Citations */}
         <div
-          className={`pt-3 border-t border-indigo-200/60 flex flex-wrap items-center gap-1.5 sm:gap-2 min-h-[38px] transition-all duration-300 ${
+          className={`pt-3 border-t border-indigo-200/60 dark:border-indigo-500/30 flex flex-wrap items-center gap-1.5 sm:gap-2 min-h-[38px] transition-all duration-300 ${
             showFiles ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1 pointer-events-none"
           }`}
         >
-          <span className="text-[10px] font-mono font-semibold tracking-wider text-slate-500 uppercase flex-none">
+          <span className="text-[10px] font-mono font-semibold tracking-wider text-slate-500 dark:text-muted-foreground uppercase flex-none">
             Source Citations:
           </span>
           {activeItem.files.map((file) => (
             <span
               key={file.name}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-200 bg-white px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs font-mono text-indigo-700 font-medium shadow-2xs hover:border-indigo-400 transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-200 dark:border-indigo-500/30 bg-white dark:bg-card px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs font-mono text-indigo-700 dark:text-indigo-300 font-medium shadow-2xs hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors"
             >
-              <FileCode2 className="size-3 text-indigo-600 flex-none" />
+              <FileCode2 className="size-3 text-indigo-600 dark:text-indigo-400 flex-none" />
               <span>{file.name}</span>
-              <span className="text-slate-400 text-[10px]">({file.lines})</span>
+              <span className="text-slate-400 dark:text-slate-500 text-[10px]">({file.lines})</span>
             </span>
           ))}
         </div>

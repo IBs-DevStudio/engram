@@ -74,6 +74,7 @@ export async function aiSummariseCommit(diff: string) {
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       return await requestSummary(diff);
+      
     } catch (e) {
       lastError = e;
       await sleep(1500 * (attempt + 1));

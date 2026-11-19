@@ -159,8 +159,9 @@ export default function QAPage() {
                 </div>
             </div>
 
-            {/* Main Ask Card */}
-            <AskQuestionCard className="w-full col-span-full shadow-md" />
+            
+            
+            {/* <AskQuestionCard className="w-full col-span-full shadow-md" /> */}
 
             {/* Saved Questions Section */}
             <div className="space-y-4">

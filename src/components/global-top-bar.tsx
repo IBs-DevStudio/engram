@@ -7,6 +7,7 @@ import {
   CreditCard,
   ExternalLink,
   FolderGit2,
+  Home,
   LayoutDashboard,
   Plus,
   Presentation,
@@ -42,6 +43,12 @@ interface NavigationItem {
 }
 
 const NAV_ITEMS: NavigationItem[] = [
+  {
+    title: "Home",
+    url: "/",
+    icon: Home,
+    description: "Main website landing page & product overview",
+  },
   {
     title: "Dashboard",
     url: "/dashboard",
@@ -177,10 +184,41 @@ export function GlobalTopBar() {
   return (
     <>
       <header className="relative flex items-center justify-between gap-2 sm:gap-3 rounded-xl border border-border/80 bg-card/80 px-2.5 py-2 sm:px-4 sm:py-2.5 backdrop-blur-xl shadow-xs transition-all">
-        {/* Left Side: Sidebar trigger + Active Project badge */}
-        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-          <SidebarTrigger className="text-muted-foreground transition-colors hover:text-foreground touch-friendly" />
+        {/* 
+          Left Side: Redesigned Home Button & Navigation Controls + Active Project Badge 
+          Replaces the redundant desktop sidebar toggle icon with a clean, dedicated Home button.
+        */}
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          {/* 
+            Mobile Drawer Trigger:
+            Visible only on mobile devices (md:hidden) so mobile users can open the off-canvas drawer.
+            Hidden on desktop since the sidebar has its own collapse trigger right beside it.
+          */}
+          <SidebarTrigger 
+            className="md:hidden size-8.5 rounded-lg border border-border/70 bg-background/50 text-muted-foreground transition-colors hover:border-primary/40 hover:bg-accent hover:text-foreground touch-friendly"
+            title="Toggle Menu" 
+          />
 
+          {/* 
+            Home Button:
+            Allows users to quickly navigate back to the main website / landing page from any protected route.
+            Features an icon + text layout on desktop/tablet, compact icon on narrow mobile screens,
+            with micro-interaction scaling and active touch feedback.
+          */}
+          <Link href="/" title="Return to Home" className="inline-flex items-center">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="group relative flex h-8.5 items-center gap-1.5 rounded-lg border border-border/70 bg-background/50 px-2.5 text-xs font-medium text-muted-foreground transition-all duration-200 hover:border-primary/40 hover:bg-accent hover:text-foreground hover:shadow-xs active:scale-95 touch-friendly"
+              aria-label="Return to Home"
+            >
+              <Home className="size-3.5 sm:size-4 text-muted-foreground transition-colors group-hover:text-primary" />
+              <span className="hidden sm:inline font-sans">Home</span>
+              <span className="sr-only">Home</span>
+            </Button>
+          </Link>
+
+          {/* Active connected repository badge */}
           {project && (
             <div className="hidden sm:flex items-center gap-2 rounded-lg border border-border/70 bg-muted/30 px-2.5 py-1 text-xs font-medium text-foreground transition-colors">
               <FolderGit2 className="size-3.5 text-primary" />

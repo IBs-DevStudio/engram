@@ -239,7 +239,7 @@ export default function AskQuestionCard({
                                         ) : (
                                             <Bookmark className="size-3.5" />
                                         )}
-                                        <span>Save to Archive</span>
+                                        <span>Save to Chat History</span>
                                     </Button>
                                 </div>
                             </div>

@@ -24,13 +24,13 @@ export function HeroInteractiveIDE() {
   };
 
   return (
-    <div className="relative mx-auto w-full max-w-5xl rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white shadow-2xl">
+    <div className="relative mx-auto w-full max-w-5xl rounded-2xl sm:rounded-3xl border border-slate-200/90 dark:border-border bg-white dark:bg-card shadow-2xl">
       {/* Soft Indigo Glow behind */}
       <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-violet-500/10 blur-2xl -z-10" />
 
-      <div className="overflow-hidden rounded-2xl sm:rounded-3xl text-slate-900">
+      <div className="overflow-hidden rounded-2xl sm:rounded-3xl text-slate-900 dark:text-foreground">
         {/* Window Chrome / Titlebar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-b border-slate-200 bg-slate-50/90 px-3.5 py-3 sm:px-6">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-border bg-slate-50/90 dark:bg-muted/40 px-3.5 py-3 sm:px-6">
           {/* Traffic Lights & Repo badge */}
           <div className="flex items-center justify-between sm:justify-start gap-2">
             <div className="flex items-center gap-2">
@@ -39,26 +39,26 @@ export function HeroInteractiveIDE() {
               <span className="size-3 rounded-full bg-emerald-400 shadow-xs" />
             </div>
 
-            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-600 shadow-2xs">
-              <GitHubIcon className="size-3.5 text-slate-700" />
-              <span className="text-slate-900 font-semibold truncate max-w-[85px] sm:max-w-none">acme-corp</span>
+            <div className="flex items-center gap-2 rounded-lg border border-slate-200 dark:border-border bg-white dark:bg-background px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-600 dark:text-slate-300 shadow-2xs">
+              <GitHubIcon className="size-3.5 text-slate-700 dark:text-slate-300" />
+              <span className="text-slate-900 dark:text-foreground font-semibold truncate max-w-[85px] sm:max-w-none">acme-corp</span>
               <span className="text-slate-400">/</span>
-              <span className="text-indigo-600 font-semibold truncate max-w-[75px] sm:max-w-none">api-core</span>
+              <span className="text-indigo-600 dark:text-indigo-400 font-semibold truncate max-w-[75px] sm:max-w-none">api-core</span>
               <span className="text-slate-400 hidden xs:inline">&bull;</span>
-              <span className="hidden xs:flex items-center gap-1 text-[11px] text-slate-600">
-                <GitBranch className="size-3 text-indigo-600" /> main
+              <span className="hidden xs:flex items-center gap-1 text-[11px] text-slate-600 dark:text-slate-300">
+                <GitBranch className="size-3 text-indigo-600 dark:text-indigo-400" /> main
               </span>
             </div>
           </div>
 
           {/* Interactive Mode Tabs - Responsive Button Labels */}
-          <div className="flex items-center justify-center rounded-xl border border-slate-200 bg-white p-1 shadow-2xs w-full sm:w-auto">
+          <div className="flex items-center justify-center rounded-xl border border-slate-200 dark:border-border bg-white dark:bg-background p-1 shadow-2xs w-full sm:w-auto">
             <button
               onClick={() => setActiveTab("copilot")}
               className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 rounded-lg px-2.5 sm:px-3 py-1.5 text-xs font-medium transition-all cursor-pointer touch-friendly ${
                 activeTab === "copilot"
                   ? "bg-indigo-600 text-white shadow-xs font-semibold"
-                  : "text-slate-600 hover:text-slate-900"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-foreground"
               }`}
             >
               <Bot className="size-3.5 flex-none" />
@@ -70,7 +70,7 @@ export function HeroInteractiveIDE() {
               className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 rounded-lg px-2.5 sm:px-3 py-1.5 text-xs font-medium transition-all cursor-pointer touch-friendly ${
                 activeTab === "commits"
                   ? "bg-indigo-600 text-white shadow-xs font-semibold"
-                  : "text-slate-600 hover:text-slate-900"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-foreground"
               }`}
             >
               <GitCommit className="size-3.5 flex-none" />
@@ -82,7 +82,7 @@ export function HeroInteractiveIDE() {
               className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 rounded-lg px-2.5 sm:px-3 py-1.5 text-xs font-medium transition-all cursor-pointer touch-friendly ${
                 activeTab === "meetings"
                   ? "bg-indigo-600 text-white shadow-xs font-semibold"
-                  : "text-slate-600 hover:text-slate-900"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-foreground"
               }`}
             >
               <Headphones className="size-3.5 flex-none" />
@@ -94,8 +94,8 @@ export function HeroInteractiveIDE() {
           {/* Status Badge */}
           <div className="hidden lg:flex items-center gap-2 text-xs font-mono">
             <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-slate-500">pgvector:</span>
-            <span className="text-emerald-700 font-semibold">142 files indexed</span>
+            <span className="text-slate-500 dark:text-muted-foreground">pgvector:</span>
+            <span className="text-emerald-700 dark:text-emerald-400 font-semibold">142 files indexed</span>
           </div>
         </div>
 
@@ -103,21 +103,21 @@ export function HeroInteractiveIDE() {
         {activeTab === "copilot" && (
           <div className="p-3.5 sm:p-6 lg:p-7 space-y-4 sm:space-y-5 animate-in fade-in duration-200">
             {/* Question Bar */}
-            <div className="rounded-2xl border border-indigo-200/90 bg-indigo-50/60 p-3.5 sm:p-5 relative overflow-hidden shadow-2xs">
+            <div className="rounded-2xl border border-indigo-200/90 dark:border-indigo-500/30 bg-indigo-50/60 dark:bg-indigo-950/40 p-3.5 sm:p-5 relative overflow-hidden shadow-2xs">
               <div className="flex items-start gap-3 sm:gap-3.5">
                 <div className="flex size-8 sm:size-9 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/25 flex-none mt-0.5">
                   <Sparkles className="size-4 sm:size-4.5" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-indigo-700">
+                    <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
                       Querying Repository Vector Index
                     </span>
-                    <span className="rounded-full bg-indigo-100 border border-indigo-200 px-2 py-0.2 text-[10px] font-mono text-indigo-800 font-semibold">
+                    <span className="rounded-full bg-indigo-100 dark:bg-indigo-900/60 border border-indigo-200 dark:border-indigo-500/40 px-2 py-0.2 text-[10px] font-mono text-indigo-800 dark:text-indigo-300 font-semibold">
                       cosine: 0.94
                     </span>
                   </div>
-                  <h4 className="text-sm sm:text-base md:text-lg font-medium text-slate-950 mt-1 leading-snug">
+                  <h4 className="text-sm sm:text-base md:text-lg font-medium text-slate-950 dark:text-foreground mt-1 leading-snug">
                     &ldquo;Where are Stripe webhook idempotency keys handled in the billing pipeline?&rdquo;
                   </h4>
                 </div>
@@ -125,25 +125,25 @@ export function HeroInteractiveIDE() {
             </div>
 
             {/* AI Synthesized Answer with exact citations */}
-            <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-3.5 sm:p-5 space-y-3.5 sm:space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+            <div className="rounded-2xl border border-slate-200 dark:border-border bg-slate-50/50 dark:bg-muted/20 p-3.5 sm:p-5 space-y-3.5 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-border pb-3">
                 <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs">
-                  <Bot className="size-4 text-indigo-600 flex-none" />
-                  <span className="font-semibold text-slate-900">Engram Synthesized Answer</span>
-                  <span className="text-slate-300 hidden sm:inline">&bull;</span>
-                  <span className="text-slate-500 font-mono text-[11px]">retrieved from 2 source files</span>
+                  <Bot className="size-4 text-indigo-600 dark:text-indigo-400 flex-none" />
+                  <span className="font-semibold text-slate-900 dark:text-foreground">Engram Synthesized Answer</span>
+                  <span className="text-slate-300 dark:text-slate-600 hidden sm:inline">&bull;</span>
+                  <span className="text-slate-500 dark:text-muted-foreground font-mono text-[11px]">retrieved from 2 source files</span>
                 </div>
                 <button
                   onClick={handleCopy}
-                  className="self-start sm:self-auto flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs text-slate-600 hover:text-slate-900 transition-colors cursor-pointer shadow-2xs touch-friendly"
+                  className="self-start sm:self-auto flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-border bg-white dark:bg-card px-2.5 py-1 text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-foreground transition-colors cursor-pointer shadow-2xs touch-friendly"
                 >
                   {copied ? <Check className="size-3 text-emerald-600" /> : <Copy className="size-3" />}
                   <span>{copied ? "Copied" : "Copy citation"}</span>
                 </button>
               </div>
 
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                Stripe webhook idempotency is handled directly in <code className="text-indigo-700 bg-indigo-100/70 px-1.5 py-0.5 rounded font-mono text-xs font-semibold break-all">src/app/api/webhook/stripe/route.ts</code>. Before adding credits, the endpoint queries <code className="text-violet-700 bg-violet-100/70 px-1.5 py-0.5 rounded font-mono text-xs font-semibold break-all">db.creditEntry</code> using the unique <code className="text-slate-900 font-mono text-xs font-medium">stripeSessionId</code> to prevent double-crediting duplicate webhook payloads.
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                Stripe webhook idempotency is handled directly in <code className="text-indigo-700 dark:text-indigo-300 bg-indigo-100/70 dark:bg-indigo-950/70 px-1.5 py-0.5 rounded font-mono text-xs font-semibold break-all">src/app/api/webhook/stripe/route.ts</code>. Before adding credits, the endpoint queries <code className="text-violet-700 dark:text-violet-300 bg-violet-100/70 dark:bg-violet-950/70 px-1.5 py-0.5 rounded font-mono text-xs font-semibold break-all">db.creditEntry</code> using the unique <code className="text-slate-900 dark:text-foreground font-mono text-xs font-medium">stripeSessionId</code> to prevent double-crediting duplicate webhook payloads.
               </p>
 
               {/* Developer Syntax Highlighted Code Box */}
@@ -176,19 +176,19 @@ export function HeroInteractiveIDE() {
               </div>
 
               {/* Cited Files Footer */}
-              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-2 border-t border-slate-200">
-                <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500 flex-none">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-2 border-t border-slate-200 dark:border-border">
+                <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500 dark:text-muted-foreground flex-none">
                   Source Citations:
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-200 bg-indigo-50 px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs font-mono text-indigo-700 font-medium">
-                  <FileCode2 className="size-3 text-indigo-600 flex-none" />
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-200 dark:border-indigo-500/30 bg-indigo-50 dark:bg-indigo-950/50 px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs font-mono text-indigo-700 dark:text-indigo-300 font-medium">
+                  <FileCode2 className="size-3 text-indigo-600 dark:text-indigo-400 flex-none" />
                   <span className="truncate max-w-[170px] sm:max-w-none">src/app/api/webhook/stripe/route.ts</span>
-                  <span className="text-slate-500 text-[10px]">(L24-38)</span>
+                  <span className="text-slate-500 dark:text-slate-400 text-[10px]">(L24-38)</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-700 shadow-2xs">
-                  <FileCode2 className="size-3 text-violet-600 flex-none" />
+                <span className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-border bg-white dark:bg-card px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs font-mono text-slate-700 dark:text-slate-300 shadow-2xs">
+                  <FileCode2 className="size-3 text-violet-600 dark:text-violet-400 flex-none" />
                   <span>src/lib/credits.ts</span>
-                  <span className="text-slate-500 text-[10px]">(L12-19)</span>
+                  <span className="text-slate-500 dark:text-slate-400 text-[10px]">(L12-19)</span>
                 </span>
               </div>
             </div>
@@ -198,35 +198,35 @@ export function HeroInteractiveIDE() {
         {/* Tab 2: Commit Memory */}
         {activeTab === "commits" && (
           <div className="p-3.5 sm:p-6 lg:p-7 space-y-4 animate-in fade-in duration-200">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-border pb-3">
               <div className="flex items-center gap-2">
-                <GitCommit className="size-4 text-violet-600 flex-none" />
-                <span className="text-sm font-semibold text-slate-900">Automated Commit Summaries</span>
+                <GitCommit className="size-4 text-violet-600 dark:text-violet-400 flex-none" />
+                <span className="text-sm font-semibold text-slate-900 dark:text-foreground">Automated Commit Summaries</span>
               </div>
-              <span className="self-start sm:self-auto rounded-full bg-violet-50 border border-violet-200 px-2.5 py-0.5 text-xs font-mono text-violet-700 font-semibold">
+              <span className="self-start sm:self-auto rounded-full bg-violet-50 dark:bg-violet-950/50 border border-violet-200 dark:border-violet-500/30 px-2.5 py-0.5 text-xs font-mono text-violet-700 dark:text-violet-300 font-semibold">
                 GitHub Webhook Synced
               </span>
             </div>
 
             <div className="space-y-3">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-3.5 sm:p-4 space-y-2.5">
+              <div className="rounded-2xl border border-slate-200 dark:border-border bg-slate-50/60 dark:bg-muted/20 p-3.5 sm:p-4 space-y-2.5">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <div className="flex items-center gap-2 min-w-0">
-                    <span className="font-mono text-xs font-bold text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded flex-none">
+                    <span className="font-mono text-xs font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-950/60 px-2 py-0.5 rounded flex-none">
                       7a3f89c
                     </span>
-                    <span className="text-xs sm:text-sm font-semibold text-slate-900 truncate">
+                    <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-foreground truncate">
                       feat: add pgvector cosine distance embeddings for code search
                     </span>
                   </div>
-                  <span className="text-[11px] sm:text-xs font-mono text-slate-500 shrink-0">2 hours ago</span>
+                  <span className="text-[11px] sm:text-xs font-mono text-slate-500 dark:text-muted-foreground shrink-0">2 hours ago</span>
                 </div>
-                <div className="rounded-xl border border-slate-200 bg-white p-3 text-xs text-slate-700 space-y-1.5 leading-relaxed shadow-2xs">
-                  <p className="font-semibold text-indigo-700 flex items-center gap-1.5">
-                    <Sparkles className="size-3 text-indigo-600" />
+                <div className="rounded-xl border border-slate-200 dark:border-border bg-white dark:bg-card p-3 text-xs text-slate-700 dark:text-slate-300 space-y-1.5 leading-relaxed shadow-2xs">
+                  <p className="font-semibold text-indigo-700 dark:text-indigo-300 flex items-center gap-1.5">
+                    <Sparkles className="size-3 text-indigo-600 dark:text-indigo-400" />
                     AI Commit Summary:
                   </p>
-                  <ul className="list-disc list-inside space-y-1 text-slate-600 pl-1">
+                  <ul className="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-400 pl-1">
                     <li>Added 768-dimension vector column to Prisma schema with pgvector extension</li>
                     <li>Created automated batch indexing job with 1 credit per source file metering</li>
                     <li>Integrated cosine similarity query helper with fallback threshold</li>
@@ -234,19 +234,19 @@ export function HeroInteractiveIDE() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-3.5 sm:p-4 space-y-2.5">
+              <div className="rounded-2xl border border-slate-200 dark:border-border bg-slate-50/60 dark:bg-muted/20 p-3.5 sm:p-4 space-y-2.5">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <div className="flex items-center gap-2 min-w-0">
-                    <span className="font-mono text-xs font-bold text-violet-700 bg-violet-100 px-2 py-0.5 rounded flex-none">
+                    <span className="font-mono text-xs font-bold text-violet-700 dark:text-violet-300 bg-violet-100 dark:bg-violet-950/60 px-2 py-0.5 rounded flex-none">
                       e4b9012
                     </span>
-                    <span className="text-xs sm:text-sm font-semibold text-slate-900 truncate">
+                    <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-foreground truncate">
                       refactor: fine-grained GitHub PAT encryption per project
                     </span>
                   </div>
-                  <span className="text-[11px] sm:text-xs font-mono text-slate-500 shrink-0">yesterday</span>
+                  <span className="text-[11px] sm:text-xs font-mono text-slate-500 dark:text-muted-foreground shrink-0">yesterday</span>
                 </div>
-                <p className="text-xs text-slate-600 pl-1 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-400 pl-1 leading-relaxed">
                   Enables repository owners to store personal access tokens securely in Postgres to index private repositories without rate limit throttling.
                 </p>
               </div>
@@ -257,29 +257,29 @@ export function HeroInteractiveIDE() {
         {/* Tab 3: Meeting Audio */}
         {activeTab === "meetings" && (
           <div className="p-3.5 sm:p-6 lg:p-7 space-y-4 animate-in fade-in duration-200">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-border pb-3">
               <div className="flex items-center gap-2">
-                <Headphones className="size-4 text-emerald-600 flex-none" />
-                <span className="text-sm font-semibold text-slate-900">Meeting Audio to Action Items</span>
+                <Headphones className="size-4 text-emerald-600 dark:text-emerald-400 flex-none" />
+                <span className="text-sm font-semibold text-slate-900 dark:text-foreground">Meeting Audio to Action Items</span>
               </div>
-              <span className="self-start sm:self-auto rounded-full bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 text-xs font-mono text-emerald-700 font-semibold">
+              <span className="self-start sm:self-auto rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-500/30 px-2.5 py-0.5 text-xs font-mono text-emerald-700 dark:text-emerald-300 font-semibold">
                 AssemblyAI + Gemini
               </span>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-3.5 sm:p-5 space-y-3.5 sm:space-y-4">
+            <div className="rounded-2xl border border-slate-200 dark:border-border bg-slate-50/60 dark:bg-muted/20 p-3.5 sm:p-5 space-y-3.5 sm:space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <h4 className="text-xs sm:text-sm font-bold text-slate-900 truncate">Architecture Sprint &bull; Q3 Vector Strategy.mp3</h4>
-                  <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">38 mins audio &bull; Transcribed &amp; indexed</p>
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-foreground truncate">Architecture Sprint &bull; Q3 Vector Strategy.mp3</h4>
+                  <p className="text-[11px] sm:text-xs text-slate-500 dark:text-muted-foreground mt-0.5">38 mins audio &bull; Transcribed &amp; indexed</p>
                 </div>
-                <span className="self-start sm:self-auto rounded-full bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs px-2.5 py-0.5 font-mono font-semibold">
+                <span className="self-start sm:self-auto rounded-full bg-emerald-100 dark:bg-emerald-900/60 border border-emerald-200 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-300 text-xs px-2.5 py-0.5 font-mono font-semibold">
                   Processed
                 </span>
               </div>
 
               {/* Audio Waveform Simulator - Responsive fluid wave */}
-              <div className="rounded-xl border border-slate-200 bg-white p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3 shadow-2xs">
+              <div className="rounded-xl border border-slate-200 dark:border-border bg-white dark:bg-card p-2.5 sm:p-3 flex items-center gap-2.5 sm:gap-3 shadow-2xs">
                 <button className="size-8 rounded-full bg-emerald-600 text-white flex items-center justify-center flex-none hover:bg-emerald-700 transition-colors cursor-pointer shadow-xs touch-friendly">
                   <Play className="size-3.5 fill-white ml-0.5" />
                 </button>
@@ -288,31 +288,31 @@ export function HeroInteractiveIDE() {
                     <span
                       key={i}
                       style={{ height: `${h}%` }}
-                      className={`flex-1 min-w-[2px] max-w-[8px] rounded-full ${i < 12 ? "bg-emerald-500" : "bg-slate-200"}`}
+                      className={`flex-1 min-w-[2px] max-w-[8px] rounded-full ${i < 12 ? "bg-emerald-500" : "bg-slate-200 dark:bg-slate-700"}`}
                     />
                   ))}
                 </div>
-                <span className="text-[10px] sm:text-xs font-mono text-slate-500 flex-none">14:22 / 38:00</span>
+                <span className="text-[10px] sm:text-xs font-mono text-slate-500 dark:text-muted-foreground flex-none">14:22 / 38:00</span>
               </div>
 
               {/* Timestamped Action Items */}
               <div className="space-y-2 pt-1">
-                <div className="rounded-xl border border-slate-200 bg-white p-3 text-xs space-y-1 shadow-2xs">
-                  <div className="flex flex-wrap items-center justify-between gap-1 text-emerald-700 font-mono text-[11px] font-semibold">
+                <div className="rounded-xl border border-slate-200 dark:border-border bg-white dark:bg-card p-3 text-xs space-y-1 shadow-2xs">
+                  <div className="flex flex-wrap items-center justify-between gap-1 text-emerald-700 dark:text-emerald-400 font-mono text-[11px] font-semibold">
                     <span>08:24 &bull; Chapter: Vector Embedding Strategy</span>
-                    <span className="text-slate-400 font-normal">Decision</span>
+                    <span className="text-slate-400 dark:text-slate-500 font-normal">Decision</span>
                   </div>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                     Team agreed to embed the first 3,000 characters of each source file with Gemini embeddings and store directly in pgvector.
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-indigo-200 bg-indigo-50/70 p-3 text-xs space-y-1 shadow-2xs">
-                  <div className="flex flex-wrap items-center justify-between gap-1 text-indigo-800 font-mono text-[11px]">
+                <div className="rounded-xl border border-indigo-200 dark:border-indigo-500/30 bg-indigo-50/70 dark:bg-indigo-950/40 p-3 text-xs space-y-1 shadow-2xs">
+                  <div className="flex flex-wrap items-center justify-between gap-1 text-indigo-800 dark:text-indigo-300 font-mono text-[11px]">
                     <span className="font-semibold">18:40 &bull; Generated Action Issue #4</span>
-                    <span className="text-indigo-700 font-bold">Created</span>
+                    <span className="text-indigo-700 dark:text-indigo-400 font-bold">Created</span>
                   </div>
-                  <p className="text-slate-900 font-medium leading-relaxed">
+                  <p className="text-slate-900 dark:text-foreground font-medium leading-relaxed">
                     Enforce max 120 files indexing threshold to respect project credit limits.
                   </p>
                 </div>

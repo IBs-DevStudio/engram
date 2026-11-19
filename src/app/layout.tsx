@@ -41,10 +41,16 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <body>
+          {/* 
+            Theme Provider Configuration:
+            - defaultTheme="light": Enforces light mode as the default for all visitors out-of-the-box.
+            - enableSystem={false}: Prevents dark mode from automatically applying based on OS preference.
+            - Users can still manually toggle to dark mode anytime via the ThemeToggle component.
+          */}
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="light"
+            enableSystem={false}
             disableTransitionOnChange
           >
             <TRPCReactProvider>{children}</TRPCReactProvider>
